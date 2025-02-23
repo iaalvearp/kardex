@@ -1,7 +1,25 @@
 
 
-    <form class="w-full max-w-3xl h-full min-h-screen mx-auto flex justify-center items-center">
-        <section class="w-[90%] h-full max-h-3/5 lg:max-w-3xl md:max-h-80 m-auto grid place-content-center relative z-10 p-4 gap-8 rounded">
-            
+    <form class="w-full max-w-3xl h-full mx-auto grid place-content-center ">
+        <section class="w-full h-full max-h-3/5 lg:max-w-3xl md:max-h-80 m-auto grid place-content-center md:grid-cols-2 relative z-10 p-4 gap-8 rounded mb-8">
+            <label for="username">
+                Usuario
+                <input type="text" name="username" id="username" class="w-full p-2 border border-gray-300 rounded" placeholder="Usuario" />
+            </label>
+            <label for="userPassword">
+                Contraseña
+                <input type="password" name="userPassword" id="userPassword" class="w-full p-2 border border-gray-300 rounded" placeholder="Contraseña" />
+            </label>
         </section>
+        <button id="btnLogin" type="submit" class="w-[95%] h-12 max-w-3xl m-auto bg-[#333] text-white rounded opacity-80 hover:opacity-100 duration-300 cursor-pointer">
+            Entrar
+        </button>
     </form>
+
+    <style>
+        input:focus {
+            outline: none;
+            border-color: #333;
+        }
+
+    </style>
