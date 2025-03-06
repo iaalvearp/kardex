@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+---
+
+<Layout >
+    <section class="w-full h-full flex flex-col justify-center items-center relative z-30">
+        <h2 class="text-5xl md:text-6xl text-center mb-8 md:mb-0 ">Modificar</h2>
+        <div class="w-4/5 max-w-60 md:max-w-full h-full max-h-80 relative rounded overflow-hidden">
+            <form id="formMod" action="" class="flex flex-col justify-center items-center md:flex-row absolute w-full min-h-full py-3 px-2 text-gray-800 gap-4 lg:gap-8 inset-0 m-auto z-40">
+                <div class="grid items-center gap-4 md:gap-8">
+                    <select name="metodoMod" id="metodoMod" class="outline-none focus:border-b-[1px] focus:border-[#333]">
+                        <option value="promedio">Promedio</option>
+                        <option value="fifo">FIFO</option>
+                    </select>
+
+                    <select name="tipoMod" id="tipoMod" class="outline-none focus:border-b-[1px] focus:border-[#333]">
+                        <option value="compra">Compra</option>
+                        <option value="venta">Venta</option>
+                    </select>
+                    <input type="date" name="fecha_ingresoMod" id="fecha_ingresoMod" class="date border-none outline-none">
+                </div>
+                <div class="grid items-center justify-center text-center">
+
+                    <label for="idTransaction">ID de Transacción</label>
+                    <input type="number" id="idTransaction" name="idTransaction" min="0">
+
+                    <label for="cantidadMod">Cantidad</label>
+                    <input type="number" id="cantidadMod" min="0" name="cantidadMod">
+    
+                    <label for="precio_unitarioMod">Precio Unitario</label>
+                    <input type="number" id="precio_unitarioMod" min="0" name="precio_unitarioMod">
+
+                    <button id="submitMod" class="outline-1 outline-gray-700 cursor-pointer hover:bg-gray-700 hover:text-white font-bold duration-300 py-1" type="submit">Modificar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    input {
+        border-bottom: #58606d 1px solid;
+        transform: border-color 0.3s;
+        text-align: center;
+        margin-bottom: 4px;
+        font-weight: 600;
+    }
+    input:focus {
+        outline: none;
+        border-bottom: #364153 1px solid;
+    }
+    input .date {
+        border: none;
+        outline: none;
+    }
+</style>
