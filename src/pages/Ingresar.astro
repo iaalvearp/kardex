@@ -1,21 +1,48 @@
-<section class="w-full min-h-screen h-full flex justify-center items-center relative z-30">
-    <div class="w-4/5 max-w-60 h-4/5 max-h-80 relative rounded overflow-hidden">
-        <form action="" class="grid absolute w-full min-h-full py-8 px-4 text-gray-800 gap-2 inset-0 m-auto z-40">
-            <h1 class="text-4xl text-center">Ingreso</h1>
-            <select name="metodo" id="metodo">
-                <option value="promedio">Promedio</option>
-                <option value="fifo">FIFO</option>
-            </select>
-            <input type="date" name="fecha_ingreso" id="fecha_ingreso">
-            <div class="grid items-center justify-center text-center">
-                <label for="cantidad">Cantidad</label>
-                <input type="number" id="cantidad" min="0" name="cantidad">
+---
+import Login from '../components/Login.astro';
+import Layout from '../layouts/Layout.astro';
 
-                <label for="precio_unitario">Precio</label>
-                <input type="number" id="precio_unitario" min="0" name="precio_unitario">
-            </div>
-            <button class="outline-1 outline-gray-700 cursor-pointer hover:bg-gray-700 hover:text-white duration-300 py-1" type="submit">Añadir</button>
-        </form>
-        <span class="absolute w-full min-h-full inset-0 m-auto z-30"></span>
-    </div>
-</section>
+---
+
+<Layout >
+    <section class="w-full h-full flex flex-col justify-center items-center relative z-30">
+        <h2 class="text-5xl md:text-6xl text-center mb-8 md:mb-0 ">Ingreso</h2>
+        <div class="w-4/5 max-w-60 md:max-w-full h-full max-h-80 relative rounded overflow-hidden">
+            <form action="" class="flex flex-col justify-center items-center md:flex-row absolute w-full min-h-full py-3 px-2 text-gray-800 gap-4 lg:gap-8 inset-0 m-auto z-40">
+                <div class="grid items-center gap-4 md:gap-8">
+                    <select name="metodo" id="metodo" class="outline-none focus:border-b-[1px] focus:border-[#333]">
+                        <option value="promedio">Promedio</option>
+                        <option value="fifo">FIFO</option>
+                    </select>
+
+                    <select name="tipo" id="tipo" class="outline-none focus:border-b-[1px] focus:border-[#333]">
+                        <option value="compra">Compra</option>
+                        <option value="venta">Venta</option>
+                    </select>
+                    <input type="date" name="fecha_ingreso" id="fecha_ingreso">
+                </div>
+                <div class="grid items-center justify-center text-center gap-2">
+                    <label for="cantidad">Cantidad</label>
+                    <input type="number" id="cantidad" min="0" name="cantidad">
+    
+                    <label for="precio_unitario">Precio</label>
+                    <input type="number" id="precio_unitario" min="0" name="precio_unitario">
+
+                    <button class="outline-1 outline-gray-700 cursor-pointer hover:bg-gray-700 hover:text-white duration-300 py-1" type="submit">Añadir</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    input {
+        border-bottom: #58606d 1px solid;
+        transform: border-color 0.3s;
+        text-align: center;
+    }
+    input:focus {
+        outline: none;
+        border-bottom: #364153 1px solid;
+    }
+</style>

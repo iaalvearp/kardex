@@ -1,14 +1,14 @@
 
 
-    <form class="w-full max-w-3xl h-full mx-auto grid place-content-center ">
+    <form action="POST" class="w-full max-w-3xl h-full mx-auto grid place-content-center ">
         <section class="w-full h-full max-h-3/5 lg:max-w-3xl md:max-h-80 m-auto grid place-content-center md:grid-cols-2 relative z-10 p-4 gap-8 rounded mb-8">
             <label class="opacity-80 hover:opacity-100 active:opacity-100" for="username">
                 Usuario
-                <input type="text" name="username" id="username" class="w-full p-2 border rounded border-[#333] opacity-80 hover:opacity-100 active:opacity-100" placeholder="Usuario" />
+                <input type="text" name="username" id="username" class="w-full p-2 border rounded border-[#333] opacity-80 hover:opacity-100 active:opacity-100" placeholder="Usuario" required/>
             </label>
             <label class="opacity-80 hover:opacity-100 active:opacity-100" for="userPassword">
                 Contraseña
-                <input type="password" name="userPassword" id="userPassword" class="w-full p-2 border rounded border-[#333] opacity-80 hover:opacity-100 active:opacity-100" placeholder="Contraseña" />
+                <input type="password" name="userPassword" id="userPassword" class="w-full p-2 border rounded border-[#333] opacity-80 hover:opacity-100 active:opacity-100" placeholder="Contraseña" required/>
             </label>
         </section>
         <button id="btnLogin" type="submit" class="w-[95%] h-12 max-w-3xl m-auto bg-[#333] text-white rounded opacity-80 hover:opacity-100 active:scale-95 scale-100 duration-300 cursor-pointer">
@@ -28,10 +28,36 @@
     </style>
 
     <script>
+
+        const users = [
+            { username: 'admin', password: '123450' },
+            { username: 'evillalta', password: '123450' }
+        ];
+
         const btnLogin = document.getElementById('btnLogin');
-        if (btnLogin) {
+        const form = document.querySelector('form');
+
+        if (btnLogin && form) {
             btnLogin.addEventListener("click", (event) => {
-                event.preventDefault();
+            event.preventDefault();
+
+            // Leer valores dentro del click
+            const username = (document.getElementById('username') as HTMLInputElement)?.value;
+            const userPassword = (document.getElementById('userPassword') as HTMLInputElement)?.value;
+
+            // Buscar si hay un usuario que coincida
+            const foundUser = users.find(u => u.username === username && u.password === userPassword);
+
+            if (foundUser) {
+                form.action = '/menu';
+            } else {
+                // Ojo: si no tienes ruta /login, dará 404
+                form.action = '/login';
+            }
+
+            // Enviar el formulario solo una vez
+            form.submit();
             });
         }
+
     </script>
