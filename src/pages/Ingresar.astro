@@ -1,5 +1,4 @@
 ---
-import Login from '../components/Login.astro';
 import Layout from '../layouts/Layout.astro';
 
 ---
@@ -19,16 +18,20 @@ import Layout from '../layouts/Layout.astro';
                         <option value="compra">Compra</option>
                         <option value="venta">Venta</option>
                     </select>
-                    <input type="date" name="fecha_ingreso" id="fecha_ingreso">
+                    <input type="date" name="fecha_ingreso" id="fecha_ingreso" class="date border-none outline-none">
                 </div>
-                <div class="grid items-center justify-center text-center gap-2">
+                <div class="grid items-center justify-center text-center">
+
+                    <label for="idProducto">ID de Producto</label>
+                    <input type="text" id="idProducto" name="idProducto" placeholder="Ejemplo: TWS-001">
+
                     <label for="cantidad">Cantidad</label>
                     <input type="number" id="cantidad" min="0" name="cantidad">
     
-                    <label for="precio_unitario">Precio</label>
+                    <label for="precio_unitario">Precio Unitario</label>
                     <input type="number" id="precio_unitario" min="0" name="precio_unitario">
 
-                    <button class="outline-1 outline-gray-700 cursor-pointer hover:bg-gray-700 hover:text-white duration-300 py-1" type="submit">Añadir</button>
+                    <button class="outline-1 outline-gray-700 cursor-pointer hover:bg-gray-700 hover:text-white font-bold duration-300 py-1" type="submit">Añadir</button>
                 </div>
             </form>
         </div>
@@ -40,9 +43,21 @@ import Layout from '../layouts/Layout.astro';
         border-bottom: #58606d 1px solid;
         transform: border-color 0.3s;
         text-align: center;
+        font-weight: 600;
     }
     input:focus {
         outline: none;
         border-bottom: #364153 1px solid;
+    }
+    input .date {
+        border: none;
+        outline: none;
+    }
+
+    @media (width >= 768px) {
+        input {
+            margin-bottom: 4px;
+        }
+        
     }
 </style>
